@@ -1,0 +1,62 @@
+<mat-card  style="background-image:url(../../assets/images/shirts2.jpg); background-size:1000px; width:1100px;  height:650px">
+  <mat-card *ngIf="!user" class="transparent">
+    <mat-form-field>
+      <input matInput type="text" placeholder="Email" [(ngModel)]="email">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <br />
+
+    <button mat-raised-button color="primary" (click)="login(email,password,user)">Login</button>
+  </mat-card>
+  <div *ngIf="products">
+    <table mat-table [dataSource]="products" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="picture">
+        <th mat-header-cell *matHeaderCellDef style="width:20%">Picture</th>
+        <td mat-cell *matCellDef="let product"> <img src="{{product.picture}}" width="100" height="100" /> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="size">
+        <th mat-header-cell *matHeaderCellDef style="width:20%">Size</th>
+        <td mat-cell *matCellDef="let product"> {{product.size}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef style="width:20%">Color</th>
+        <td mat-cell *matCellDef="let product">{{product.color}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef style="width:20%">Delivery status</th>
+        <td mat-cell *matCellDef="let product">
+          <div *ngIf="product.status"><strong>Shipped</strong> </div>
+          <div *ngIf="!product.status"><strong>In progress</strong> </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef style="width:20%">Actions</th>
+        <td mat-cell *matCellDef="let product">
+          <section>
+            <div *ngIf="!product.status">
+              <button mat-icon-button color="primary" matTooltip="Shipped">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="shippedProduct(product)" style="cursor:pointer">done</mat-icon>
+              </button>
+
+              <button mat-icon-button color="primary" matTooltip="Delete">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="deleteProduct(product)" style="cursor:pointer">remove_shopping_cart</mat-icon>
+              </button>
+            </div>
+            <div *ngIf="product.status"> <img src="../../assets/images/shipped.png" width="100" height="100" /> </div>
+          </section>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay "></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay ;"></tr>
+    </table>
+
+  </div>
+</mat-card>

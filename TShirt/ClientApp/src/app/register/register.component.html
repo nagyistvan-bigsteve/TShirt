@@ -1,0 +1,32 @@
+<mat-card  style="background-image:url(../../assets/images/shirts2.jpg); background-size:1000px; width:1100px;  height:650px" >
+  <mat-card class="transparent">
+    <mat-card-content>
+      <h2 class="example-h2">Registration</h2>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="First name" [(ngModel)]="user.firstname">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Last name" [(ngModel)]="user.lastname">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" [(ngModel)]="user.email">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="text" placeholder="Address" [(ngModel)]="user.address">
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" [(ngModel)]="user.password">
+      </mat-form-field>
+      <br />
+
+      <button mat-raised-button color="primary" (click)="saveUser()">Save User</button>
+      <br /> <br />
+      <button mat-raised-button color="primary" (click)="backToHome()">Back</button>
+    </mat-card-content>
+  </mat-card>
+</mat-card>

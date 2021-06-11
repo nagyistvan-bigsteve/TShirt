@@ -1,0 +1,75 @@
+  <mat-card class="green">
+    <mat-card-header><mat-card-title>T-Shirt creator</mat-card-title></mat-card-header>
+    <mat-grid-list cols="3" rowHeight="10:1">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile [rowspan]="20" [colspan]="2">
+        <mat-card-content>
+          <div class="example-boundary" [style.background-color]="colorCtr.value?.rgba">
+            <div class="example-box resize example-boundary" cdkDragBoundary=".example-boundary" [style.background-color]="colorCtr.value?.rgba"  cdkDrag (resized)="onResized($event)">
+              <img src="{{myImage}}" class="resize" />
+
+              <div class="example-handle" cdkDragHandle>
+                <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+                  <path d="M0 0h24v24H0z" fill="none"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [rowspan]="2" [style.background]="'lightblue'">
+        <button mat-raised-button color="primary" type="button" (click)="changeImage()">Change image</button> &nbsp;&nbsp;
+        <button mat-raised-button color="primary" type="button" (click)="noImage()">Delete image</button>
+
+      </mat-grid-tile>
+
+
+      <mat-grid-tile [rowspan]="3" [style.background]="'lightblue'">
+        <mat-card class="zone zone-picker">
+          <mat-form-field>
+            <input matInput [ngxMatColorPicker]="picker" [formControl]="colorCtr" [disabled]="disabled">
+            <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+            <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+          </mat-form-field>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile [rowspan]="2" [style.background]="'lightblue'">
+        <mat-form-field>
+          <mat-label>Size:</mat-label>
+          <mat-select [(ngModel)]="size">
+            <mat-option value="XS">XS</mat-option>
+            <mat-option value="S">S</mat-option>
+            <mat-option value="M">M</mat-option>
+            <mat-option value="L">L</mat-option>
+            <mat-option value="XL">XL</mat-option>
+            <mat-option value="XXL">XXL</mat-option>
+            <mat-option value="XXXL">XXXL</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile [rowspan]="7" [style.background]="'lightblue'">
+        <mat-card>
+          <mat-form-field>
+            <input matInput type="text" placeholder="Email" [(ngModel)]="email">
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+          </mat-form-field>
+
+          <br />
+
+          <button mat-raised-button color="primary" (click)="login(email,password,user)">Login</button>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [rowspan]="2" [style.background]="'lightblue'">
+      <div *ngIf="user && size">
+        <button mat-raised-button color="primary" (click)="submit()"><mat-icon>add_shopping_cart</mat-icon>Order</button>
+      </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card>

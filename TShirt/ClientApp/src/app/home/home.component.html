@@ -1,0 +1,30 @@
+<mat-card style="background-image:url(../../assets/images/shirts2.jpg); background-size:1000px; width:1100px;  height:650px" >
+  <div *ngIf="stat">
+    <mat-card class="transparent">
+      <mat-card-title style="text-align:center"> We have </mat-card-title>
+      <mat-card-content style="font-size: 40px; text-align:center; text-shadow:50px"><strong>{{stat.users}}</strong></mat-card-content>
+      <mat-card-footer style="font-size: 20px;font:bolder ; text-align:center">registred user</mat-card-footer>
+    </mat-card>
+    <mat-grid-list cols="2" rowHeight="2:1" style="background-color:transparent">
+      <mat-grid-tile>
+        <mat-card class="transparent" style="width:500px; height:200px">
+          <mat-card-title style="text-align:center"> We have </mat-card-title>
+          <mat-card-content style="font-size: 40px; text-align:center; text-shadow:50px"><strong>{{stat.totalorder}}</strong></mat-card-content>
+          <mat-card-footer style="font-size: 30px;font:bolder ; text-align:center">total order</mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="transparent" style="width:500px; height:200px">
+          <mat-card-title style="text-align:center"> We have </mat-card-title>
+          <mat-card-content style="font-size: 40px; text-align:center; text-shadow:50px"><strong>{{stat.shippedorder}}</strong></mat-card-content>
+          <mat-card-footer style="font-size: 30px;font:bolder ; text-align:center">shipped order</mat-card-footer>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-card class="transoarent2">
+      <mat-card-title style="text-align:center"><strong>Just</strong>  </mat-card-title>
+      <mat-card-content style="font-size: 40px; text-align:center; text-shadow:50px"><strong>{{price}}<mat-icon>euro</mat-icon></strong></mat-card-content>
+      <mat-card-footer style="font-size: 20px;font:bolder ; text-align:center"><strong>every t-shirt</strong> </mat-card-footer>
+    </mat-card>
+  </div>
+</mat-card>
